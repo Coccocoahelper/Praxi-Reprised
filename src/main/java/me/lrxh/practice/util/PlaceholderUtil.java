@@ -22,7 +22,14 @@ import java.util.List;
 @UtilityClass
 public final class PlaceholderUtil {
 
-    public static List<String> format(List<String> lines, Player player) {
+    /**
+     * Format the lines and replace the placeholders
+     *
+     * @param lines  the lines
+     * @param player the player
+     * @return the formatted lines
+     */
+    public List<String> format(List<String> lines, Player player) {
         List<String> formattedLines = new ArrayList<>();
         Profile profile = Profile.getByUuid(player.getUniqueId());
         QueueProfile queueProfile = profile.getQueueProfile();
@@ -94,7 +101,7 @@ public final class PlaceholderUtil {
                     line = line.replaceAll("<opponent_ping>", String.valueOf(BukkitReflection.getPing(match.getOpponent(player.getUniqueId()))));
                     line = line.replaceAll("<your_hits>", String.valueOf(match.getGamePlayer(player).getHits()));
                     line = line.replaceAll("<opponent_hits>", String.valueOf(match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits()));
-                    line = line.replaceAll("<hit_difference>", getDifference(player));
+                    line = line.replaceAll("<hit_difference>", getDifference(player, profile));
                     line = line.replaceAll("<combo>", getHitCombo(player, false));
                     line = line.replaceAll("<mmcCombo>", getHitCombo(player, true));
 
@@ -122,18 +129,25 @@ public final class PlaceholderUtil {
         return formattedLines;
     }
 
-    public String getDifference(Player player) {
-        Profile profile = Profile.getByUuid(player.getUniqueId());
+    /**
+     * Get the difference between the player and the opponent hits
+     *
+     * @param player the player
+     * @return the difference between the player and the opponent hits
+     */
+    public String getDifference(Player player, Profile profile) {
+        FileConfiguration scoreboardConfig = Practice.getInstance().getScoreboardConfig().getConfiguration();
         Match match = profile.getMatch();
+
         Integer playerHits = match.getGamePlayer(player).getHits();
         Integer opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
-        FileConfiguration scoreboardConfig = Practice.getInstance().getScoreboardConfig().getConfiguration();
 
         String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-ADVANTAGE");
         String isTie = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-TIE");
         String isDisadvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-DISADVANTAGE");
-        isAdvantage.replaceAll("<advantage>", Integer.toString(playerHits - opponentHits));
-        isDisadvantage.replaceAll("<disadvantage>", Integer.toString(opponentHits - playerHits));
+
+        isAdvantage = isAdvantage.replace("<advantage>", Integer.toString(playerHits - opponentHits));
+        isDisadvantage = isDisadvantage.replace("<disadvantage>", Integer.toString(opponentHits - playerHits));
 
         if (playerHits - opponentHits > 0) {
             return CC.translate(isAdvantage);
@@ -144,6 +158,12 @@ public final class PlaceholderUtil {
         }
     }
 
+    /**
+     * Get players combo
+     *
+     * @param player the player
+     * @return the hit combo
+     */
     public String getHitCombo(Player player, boolean isMMCCombo) {
         Profile profile = Profile.getByUuid(player.getUniqueId());
         Match match = profile.getMatch();
