@@ -112,7 +112,7 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case ALLOW_DUELS: {
-                    if (profile.getOptions().allowDuels()) {
+                    if (profile.getOptions().receiveDuelRequests()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE")) {
                             lore.add(line);
                         }
