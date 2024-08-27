@@ -73,7 +73,7 @@ public class SettingsMenu extends Menu {
             lore.add(" ");
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
-                    if (profile.getOptions.showScoreboard()) {
+                    if (profile.getOptions().showScoreboard()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE")) {
                             lore.add(line);
                         }
@@ -85,7 +85,7 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case MENU_SOUNDS: {
-                    if (profile.getOptions.menuSounds()) {
+                    if (profile.getOptions().menuSounds()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE")) {
                             lore.add(line);
                         }
@@ -112,7 +112,7 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case ALLOW_DUELS: {
-                    if (profile.getOptions.allowDuels()) {
+                    if (profile.getOptions().allowDuels()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE")) {
                             lore.add(line);
                         }
@@ -124,7 +124,7 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case ALLOW_SPECTATORS: {
-                    if (profile.getOptions.allowSpectators()) {
+                    if (profile.getOptions().allowSpectators()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE")) {
                             lore.add(line);
                         }
@@ -136,7 +136,7 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case SHOW_PLAYERS: {
-                    if (profile.getOptions.showPlayers()) {
+                    if (profile.getOptions().showPlayers()) {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE")) {
                             lore.add(line);
                         }
