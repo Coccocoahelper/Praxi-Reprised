@@ -12,6 +12,7 @@ import me.lrxh.practice.profile.Profile;
 import me.lrxh.practice.profile.ProfileState;
 import me.lrxh.practice.queue.QueueProfile;
 import me.lrxh.practice.util.config.BasicConfigurationFile;
+import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -126,7 +127,7 @@ public final class PlaceholderUtil {
         Match match = profile.getMatch();
         Integer playerHits = match.getGamePlayer(player).getHits();
         Integer opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
-        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
+        FileConfiguration scoreboardConfig = Practice.getInstance().getScoreboardConfig().getConfiguration();
 
         String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-ADVANTAGE");
         String isTie = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-TIE");
