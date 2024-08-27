@@ -50,7 +50,7 @@ public class BasicFreeForAllMatch extends Match {
         PlayerUtil.reset(player);
 
         // Deny movement if the kit is sumo
-        if (getKit().getGameRules().isSumo() || getKit().getGameRules().isBedwars()) {
+        if (getKit().getGameRules().isSumo() || getKit().getGameRules().isBedfight()) {
             PlayerUtil.denyMovement(player);
         }
 

@@ -32,7 +32,7 @@ public class MatchLogicTask extends BukkitRunnable {
         }
         nextAction--;
         if (match.getState() == MatchState.STARTING_ROUND) {
-            if (match.getKit().getGameRules().isSumo() || match.getKit().getGameRules().isBedwars()) {
+            if (match.getKit().getGameRules().isSumo() || match.getKit().getGameRules().isBedfight()) {
                 for (GameParticipant<MatchGamePlayer> gameParticipant : match.getParticipants()) {
                     for (GamePlayer gamePlayer : gameParticipant.getPlayers()) {
                         PlayerUtil.denyMovement(gamePlayer.getPlayer());
@@ -46,7 +46,7 @@ public class MatchLogicTask extends BukkitRunnable {
                 match.sendMessage(" ");
                 match.sendMessage(Locale.MATCH_WARNING.format());
 
-                if (match.getKit().getGameRules().isSumo() || match.getKit().getGameRules().isBedwars()) {
+                if (match.getKit().getGameRules().isSumo() || match.getKit().getGameRules().isBedfight()) {
                     for (GameParticipant<MatchGamePlayer> gameParticipant : match.getParticipants()) {
                         for (GamePlayer gamePlayer : gameParticipant.getPlayers()) {
                             PlayerUtil.allowMovement(gamePlayer.getPlayer());

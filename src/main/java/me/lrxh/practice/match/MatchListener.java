@@ -51,12 +51,12 @@ public class MatchListener implements Listener {
                     match.onDeath(event.getPlayer());
                 }
             }
-            if (match.getKit().getGameRules().isBedwars()) {
+            if (match.getKit().getGameRules().isBedfight()) {
                 Player player = event.getPlayer();
 
                 boolean bedGone = match.getParticipantA().containsPlayer(player.getUniqueId()) ? match.bedBBroken : match.bedABroken;
 
-                if (profile.getMatch().kit.getGameRules().isBedwars()) {
+                if (profile.getMatch().kit.getGameRules().isBedfight()) {
                     if (!(player.getLocation().getY() >= match.getArena().getDeathZone()) && !match.getGamePlayer(player).isRespawned()) {
                         if (!bedGone) {
 
@@ -228,7 +228,7 @@ public class MatchListener implements Listener {
             } else {
                 event.setCancelled(true);
             }
-            if (match.kit.getGameRules().isBedwars() && (event.getBlock().getType().equals(Material.BED_BLOCK) || event.getBlock().getType().equals(Material.BED)) || event.getBlock().getType().equals(Material.ENDER_STONE) || (event.getBlock().getType().equals(Material.WOOD) && event.getBlock().getData() == 0)) {
+            if (match.kit.getGameRules().isBedfight() && (event.getBlock().getType().equals(Material.BED_BLOCK) || event.getBlock().getType().equals(Material.BED)) || event.getBlock().getType().equals(Material.ENDER_STONE) || (event.getBlock().getType().equals(Material.WOOD) && event.getBlock().getData() == 0)) {
                 event.setCancelled(false);
             }
             if (match.getGamePlayer(event.getPlayer()).isRespawned()) {
@@ -365,7 +365,7 @@ public class MatchListener implements Listener {
 
             boolean bedGone = aTeam ? match.bedBBroken : match.bedABroken;
 
-            if (profile.getMatch().getKit().getGameRules().isBedwars()) {
+            if (profile.getMatch().getKit().getGameRules().isBedfight()) {
                 event.getDrops().clear();
                 if (!bedGone) {
 
@@ -473,7 +473,7 @@ public class MatchListener implements Listener {
                     GameParticipant<MatchGamePlayer> participantA = match.getParticipant(player);
 
                     boolean bedGone = participantA != null && participantA.containsPlayer(event.getEntity().getUniqueId()) ? match.bedABroken : match.bedBBroken;
-                    if (profile.getMatch().kit.getGameRules().isBedwars() && !bedGone) {
+                    if (profile.getMatch().kit.getGameRules().isBedfight() && !bedGone) {
                         Location spawn = participantA != null && participantA.containsPlayer(event.getEntity().getUniqueId()) ?
                                 match.getArena().getSpawnA() : match.getArena().getSpawnB();
 
@@ -511,7 +511,7 @@ public class MatchListener implements Listener {
         Profile profile = Profile.getByUuid(player.getUniqueId());
         if (profile.getMatch() == null) return;
         if (profile.getMatch().getKit().getGameRules().isSumo()
-                || profile.getMatch().getKit().getGameRules().isBedwars()
+                || profile.getMatch().getKit().getGameRules().isBedfight()
                 || profile.getMatch().getKit().getGameRules().isSpleef()
                 || profile.getMatch().getKit().getGameRules().isBoxing()) {
             event.setCancelled(true);

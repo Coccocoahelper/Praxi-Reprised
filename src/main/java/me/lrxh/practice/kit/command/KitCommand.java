@@ -53,9 +53,9 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit seticon &7<kit> - &fSet kit icon"));
         player.sendMessage(CC.translate("&7* &c/kit enable &7<kit> - &fEnable/Disable kit"));
         player.sendMessage(CC.translate("&7* &c/kit setdescription &7<kit> &7<value> &7- &fSet kit description"));
-        player.sendMessage(CC.translate("&7* &c/kit build &7<kit> &7- &fAdd Build rule"));
-        player.sendMessage(CC.translate("&7* &c/kit spleef &7<kit> &7- &fAdd Spleef rule"));
-        player.sendMessage(CC.translate("&7* &c/kit showhp &7<kit> &7- &fAdd Shop HP rule"));
+        player.sendMessage(CC.translate("&7* &c/kit build &7<kit> &7- &fToggle Build for this kit"));
+        player.sendMessage(CC.translate("&7* &c/kit spleef &7<kit> &7- &fToggle Spleef for this kit"));
+        player.sendMessage(CC.translate("&7* &c/kit showhp &7<kit> &7- &fToggle Show HP for this kit"));
         player.sendMessage(CC.translate("&7&m-----------------------------------------"));
     }
 
@@ -64,11 +64,11 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7&m-----------------------------------------"));
         player.sendMessage(CC.translate("&cKit Management &7[&f3/3&7] - &f/kit help <page>"));
         player.sendMessage(" ");
-        player.sendMessage(CC.translate("&7* &c/kit sumo &7<kit> - &fAdd Sumo rule"));
-        player.sendMessage(CC.translate("&7* &c/kit hpregen &7<kit> - &fSet HPRegen rule"));
+        player.sendMessage(CC.translate("&7* &c/kit sumo &7<kit> - &fToggle Sumo for this kit"));
+        player.sendMessage(CC.translate("&7* &c/kit hpregen &7<kit> - &fToggle HPRegen for this kit"));
         player.sendMessage(CC.translate("&7* &c/kit hitdelay &7<kit> <value> - &fSet hit delay"));
-        player.sendMessage(CC.translate("&7* &c/kit boxing &7<kit> - &fAdd Boxing rule"));
-        player.sendMessage(CC.translate("&7* &c/kit bedwars &7<kit> - &fAdd Bedwars rule"));
+        player.sendMessage(CC.translate("&7* &c/kit boxing &7<kit> - &fToggle Boxing for this kit"));
+        player.sendMessage(CC.translate("&7* &c/kit bedfight &7<kit> - &fToggle Bedfight for this kit"));
         player.sendMessage(CC.translate("&7&m-----------------------------------------"));
     }
 
@@ -257,10 +257,10 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.GREEN + "You updated the kit's build status to " + (kit.getGameRules().isBuild() ? "Enabled" : ChatColor.RED + "Disabled" + "."));
     }
 
-    @Subcommand("bedwars")
+    @Subcommand("bedfight")
     @CommandCompletion("@kits")
     @Syntax("<kit>")
-    public void bedwars(Player player, String kitName) {
+    public void bedfight(Player player, String kitName) {
         if (!Kit.getKits().contains(Kit.getByName(kitName))) {
             player.sendMessage(CC.translate("&4ERROR - &cKit doesn't exists!"));
             return;
@@ -268,10 +268,8 @@ public class KitCommand extends BaseCommand {
         Kit kit = Kit.getByName(kitName);
         if (kit == null) return;
 
-        kit.getGameRules().setBedwars(!kit.getGameRules().isBedwars());
-        kit.save();
-
-        player.sendMessage(CC.GREEN + "You updated the kit's bedwars status to " + (kit.getGameRules().isBedwars() ? "Enabled" : ChatColor.RED + "Disabled" + "."));
+        kit.getGameRules().setBedfight(!kit.getGameRules().isBedfight());
+        kit.save();        player.sendMessage(CC.GREEN + "You updated the kit's Bedfight status to " + (kit.getGameRules().isBedfight() ? "Enabled" : ChatColor.RED + "Disabled" + "."));
     }
 
     @Subcommand("spleef")

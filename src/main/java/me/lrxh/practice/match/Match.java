@@ -575,7 +575,7 @@ public abstract class Match {
             }
         }
 
-        if (kit.getGameRules().isBedwars()) {
+        if (kit.getGameRules().isBedfight()) {
             sendDeathMessage(dead, killer, true);
         }
 

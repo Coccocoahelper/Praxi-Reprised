@@ -10,6 +10,7 @@ import me.lrxh.practice.profile.ProfileState;
 import me.lrxh.practice.queue.QueueProfile;
 import me.lrxh.practice.util.PlaceholderUtil;
 import me.lrxh.practice.util.PlayerUtil;
+import me.lrxh.practice.util.config.BasicConfigurationFile;
 import me.lrxh.practice.util.assemble.AssembleAdapter;
 import org.bukkit.entity.Player;
 
@@ -26,28 +27,29 @@ public class ScoreboardAdapter implements AssembleAdapter {
 
     public List<String> getLines(Player player) {
         Profile profile = Profile.getByUuid(player.getUniqueId());
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
 
         if (profile.getState() == ProfileState.LOBBY) {
             if (profile.getParty() != null) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("IN-PARTY.LOBBY")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("IN-PARTY.LOBBY")), player);
             }
             if (Practice.getInstance().isReplay()) {
                 if (PlayerUtil.inReplay(player)) {
-                    return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("REPLAYING")), player);
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("REPLAYING")), player);
                 }
             }
-            return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("LOBBY")), player);
+            return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("LOBBY")), player);
         }
 
         if (profile.getState() == ProfileState.SPECTATING) {
-            return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("SPECTATING")), player);
+            return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("SPECTATING")), player);
         }
 
         if (profile.getState() == ProfileState.QUEUEING) {
             QueueProfile queueProfile = profile.getQueueProfile();
 
             if (queueProfile.getQueue().isRanked()) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("QUEUE.RANKED")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("QUEUE.RANKED")), player);
             }
             return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("QUEUE.UNRANKED")), player);
         }
@@ -55,26 +57,26 @@ public class ScoreboardAdapter implements AssembleAdapter {
         if (profile.getMatch() != null) {
             Match match = profile.getMatch();
             if (match instanceof BasicTeamMatch && profile.getParty() != null) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("IN-PARTY.IN-SPLIT-MATCH")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("IN-PARTY.IN-SPLIT-MATCH")), player);
             }
             if (match instanceof BasicFreeForAllMatch) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("IN-PARTY.IN-FFA-MATCH")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("IN-PARTY.IN-FFA-MATCH")), player);
             }
 
             if (match.getState().equals(MatchState.STARTING_ROUND)) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("MATCH.STARTING")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.STARTING")), player);
             }
             if (match.getState().equals(MatchState.ENDING_MATCH)) {
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("MATCH.ENDING")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.ENDING")), player);
             }
             if (match.getState().equals(MatchState.PLAYING_ROUND)) {
                 if (match.getKit().getGameRules().isBoxing()) {
-                    return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("MATCH.IN-MATCH-BOXING")), player);
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH-BOXING")), player);
                 }
-                if (match.getKit().getGameRules().isBedwars()) {
-                    return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("MATCH.IN-MATCH-BEDWARS")), player);
+                if (match.getKit().getGameRules().isBedfight()) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH-BEDFIGHT")), player);
                 }
-                return PlaceholderUtil.format(new ArrayList<>(Practice.getInstance().getScoreboardConfig().getStringList("MATCH.IN-MATCH")), player);
+                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH")), player);
             }
         }
 
@@ -82,8 +84,10 @@ public class ScoreboardAdapter implements AssembleAdapter {
     }
 
     private String getAnimatedText() {
-        int index = (int) ((System.currentTimeMillis() / Practice.getInstance().getScoreboardConfig().getInteger("UPDATE-INTERVAL"))
-                % Practice.getInstance().getScoreboardConfig().getStringList("TITLE").size());
-        return Practice.getInstance().getScoreboardConfig().getStringList("TITLE").get(index);
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
+    
+        int index = (int) ((System.currentTimeMillis() / scoreboardConfig.getInteger("UPDATE-INTERVAL"))
+                % scoreboardConfig.getStringList("TITLE").size());
+        return scoreboardConfig.getStringList("TITLE").get(index);
     }
 }
