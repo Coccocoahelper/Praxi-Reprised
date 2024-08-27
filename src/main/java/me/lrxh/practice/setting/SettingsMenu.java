@@ -73,17 +73,27 @@ public class SettingsMenu extends Menu {
             lore.add(" ");
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
-                    lore.add(profile.getOptions().showScoreboard() ? " &7&l▶ &aYes" : " &7&l▶ &7Yes");
-                    lore.add(!profile.getOptions().showScoreboard() ? " &7&l▶ &cNo" : " &7&l▶ &7No");
-                    lore.add(" ");
-                    lore.add(!profile.getOptions().showScoreboard() ? "&aClick to enable" : "&aClick to disable");
+                    if (profile.getOptions.showScoreboard()) {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE")) {
+                            lore.add(line);
+                        }
+                    } else {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE")) {
+                            lore.add(line);
+                        }
+                    }
                     break;
                 }
                 case MENU_SOUNDS: {
-                    lore.add(profile.getOptions().menuSounds() ? " &7&l▶ &aYes" : " &7&l▶ &7Yes");
-                    lore.add(!profile.getOptions().menuSounds() ? " &7&l▶ &cNo" : " &7&l▶ &7No");
-                    lore.add(" ");
-                    lore.add(!profile.getOptions().menuSounds() ? "&aClick to enable" : "&aClick to disable");
+                    if (profile.getOptions.menuSounds()) {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE")) {
+                            lore.add(line);
+                        }
+                    } else {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE")) {
+                            lore.add(line);
+                        }
+                    }
                     break;
                 }
                 case TIME_CHANGE: {
@@ -102,24 +112,39 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case ALLOW_DUELS: {
-                    lore.add(profile.getOptions().receiveDuelRequests() ? " &7&l▶ &aYes" : " &7&l▶ &7Yes");
-                    lore.add(!profile.getOptions().receiveDuelRequests() ? " &7&l▶ &cNo" : " &7&l▶ &7No");
-                    lore.add(" ");
-                    lore.add(!profile.getOptions().receiveDuelRequests() ? "&aClick to enable" : "&aClick to disable");
+                    if (profile.getOptions.allowDuels()) {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE")) {
+                            lore.add(line);
+                        }
+                    } else {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE")) {
+                            lore.add(line);
+                        }
+                    }
                     break;
                 }
                 case ALLOW_SPECTATORS: {
-                    lore.add(profile.getOptions().allowSpectators() ? " &7&l▶ &aYes" : " &7&l▶ &7Yes");
-                    lore.add(!profile.getOptions().allowSpectators() ? " &7&l▶ &cNo" : " &7&l▶ &7No");
-                    lore.add(" ");
-                    lore.add(!profile.getOptions().allowSpectators() ? "&aClick to enable" : "&aClick to disable");
+                    if (profile.getOptions.allowSpectators()) {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE")) {
+                            lore.add(line);
+                        }
+                    } else {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE")) {
+                            lore.add(line);
+                        }
+                    }
                     break;
                 }
                 case SHOW_PLAYERS: {
-                    lore.add(profile.getOptions().showPlayers() ? " &7&l▶ &aYes" : " &7&l▶ &7Yes");
-                    lore.add(!profile.getOptions().showPlayers() ? " &7&l▶ &cNo" : " &7&l▶ &7No");
-                    lore.add(" ");
-                    lore.add(!profile.getOptions().showPlayers() ? "&aClick to enable" : "&aClick to disable");
+                    if (profile.getOptions.showPlayers()) {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE")) {
+                            lore.add(line);
+                        }
+                    } else {
+                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE")) {
+                            lore.add(line);
+                        }
+                    }
                     break;
                 }
                 case KILL_EFFECTS: {

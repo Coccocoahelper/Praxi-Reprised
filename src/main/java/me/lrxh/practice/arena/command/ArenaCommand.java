@@ -38,43 +38,43 @@ public class ArenaCommand extends BaseCommand {
     @Default
     @Subcommand("help")
     public void help(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cArena Management &7[&f1/3&7] - &f/arena help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/arena create &7<value> &7</STANDALONE/SHARED> - &fCreate arena"));
         player.sendMessage(CC.translate("&7* &c/arena remove &7<arena> - &fRemove arena"));
         player.sendMessage(CC.translate("&7* &c/arena save &7- &fSave arenas to file"));
         player.sendMessage(CC.translate("&7* &c/arena wand &7- &fGet Selection wand"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 1")
     public void help1(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cArena Management &7[&f1/3&7] - &f/arena help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/arena create &7<value> - &fCreate arena"));
         player.sendMessage(CC.translate("&7* &c/arena remove &7<arena> - &fRemove arena"));
         player.sendMessage(CC.translate("&7* &c/arena save &7- &fSave arenas to file"));
         player.sendMessage(CC.translate("&7* &c/arena wand &7- &fGet Selection wand"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 2")
     public void help2(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cArena Management &7[&f2/3&7] - &f/arena help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/arena status &7<arena> - &fSee arena status"));
         player.sendMessage(CC.translate("&7* &c/arena genhelper &7- &fPlace Generator Helper"));
         player.sendMessage(CC.translate("&7* &c/arena addKit &7<arena> &7<kit> &7- &fAdd arena to kit"));
         player.sendMessage(CC.translate("&7* &c/arena removeKit &7<arena> &7<kit> &7- &fRemove arena to kit"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 3")
     public void help3(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cArena Management &7[&f3/3&7] - &f/arena help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/arena generate &7- &fArena Generator"));
@@ -82,7 +82,7 @@ public class ArenaCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/arena setspawn &7<arena> &7<a/b> &7- &fSet arena spawns"));
         player.sendMessage(CC.translate("&7* &c/arena tp &7<arena> &7- &fTeleport arena"));
         player.sendMessage(CC.translate("&7* &c/arena setDisplayName &7<arena> &7<value> &7- &fSet arena display name"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
 

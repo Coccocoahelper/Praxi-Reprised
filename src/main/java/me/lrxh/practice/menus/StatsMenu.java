@@ -93,8 +93,7 @@ public class StatsMenu extends Menu {
             List<String> lore = new ArrayList<>();
             Profile profile = Profile.getByUuid(target.getUniqueId());
             for (String line : Practice.getInstance().getMenusConfig().getStringList("STATS.LORE")) {
-                line = line.replaceAll("<playing>", String.valueOf(Match.getInFightsCount(queue)));
-                line = line.replaceAll("<queueing>", String.valueOf(queue.getQueuing()));
+                line = line.replaceAll("<fighting>", String.valueOf(Match.getInFightsCount(queue)));
                 line = line.replaceAll("<queueing>", String.valueOf(queue.getQueuing()));
 
                 line = line.replaceAll("<wins>", String.valueOf(profile.getKitData().get(queue.getKit()).getWon()));

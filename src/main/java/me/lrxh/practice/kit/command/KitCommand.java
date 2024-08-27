@@ -21,7 +21,7 @@ public class KitCommand extends BaseCommand {
     @Default
     @Subcommand("help")
     public void help(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cKit Management &7[&f1/3&7] - &f/kit help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/kit create &7<value> - &fCreate kit"));
@@ -29,12 +29,12 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit list &7- &fList all kits"));
         player.sendMessage(CC.translate("&7* &c/arena setinv &7<kit> &7- &fSet kit loadout"));
         player.sendMessage(CC.translate("&7* &c/arena setkb &7<kit> &7<kb> &7- &fSet kit KB Profile"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 1")
     public void help1(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cKit Management &7[&f1/3&7] - &f/kit help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/kit create &7<value> - &fCreate kit"));
@@ -42,12 +42,12 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit list &7- &fList all kits"));
         player.sendMessage(CC.translate("&7* &c/kit setinv &7<kit> &7- &fSet kit loadout"));
         player.sendMessage(CC.translate("&7* &c/kit setkb &7<kit> &7<kb> &7- &fSet kit KB Profile"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 2")
     public void help2(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cKit Management &7[&f2/3&7] - &f/kit help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/kit seticon &7<kit> - &fSet kit icon"));
@@ -56,12 +56,12 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit build &7<kit> &7- &fToggle Build for this kit"));
         player.sendMessage(CC.translate("&7* &c/kit spleef &7<kit> &7- &fToggle Spleef for this kit"));
         player.sendMessage(CC.translate("&7* &c/kit showhp &7<kit> &7- &fToggle Show HP for this kit"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("help 3")
     public void help3(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&cKit Management &7[&f3/3&7] - &f/kit help <page>"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/kit sumo &7<kit> - &fToggle Sumo for this kit"));
@@ -69,7 +69,7 @@ public class KitCommand extends BaseCommand {
         player.sendMessage(CC.translate("&7* &c/kit hitdelay &7<kit> <value> - &fSet hit delay"));
         player.sendMessage(CC.translate("&7* &c/kit boxing &7<kit> - &fToggle Boxing for this kit"));
         player.sendMessage(CC.translate("&7* &c/kit bedfight &7<kit> - &fToggle Bedfight for this kit"));
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("create")

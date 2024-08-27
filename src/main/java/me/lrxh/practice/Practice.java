@@ -169,7 +169,7 @@ public class Practice extends JavaPlugin {
             replay = true;
             Console.sendMessage(CC.translate("&aAdvancedReplay found!"));
         }
-        Console.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        Console.sendMessage(CC.translate("&7&m----------------------------------------"));
         Console.sendMessage(CC.translate(" "));
         Console.sendMessage(CC.translate("&7| &cPractice Core"));
         Console.sendMessage(CC.translate(" "));
@@ -185,7 +185,7 @@ public class Practice extends JavaPlugin {
         Console.sendMessage(CC.translate(" "));
         Console.sendMessage(CC.translate("&7| &fPlugin Loaded in : &c" + (System.currentTimeMillis() - oldTime) + "ms"));
         Console.sendMessage(CC.translate(" "));
-        Console.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        Console.sendMessage(CC.translate("&7&m----------------------------------------"));
         System.gc();
     }
 

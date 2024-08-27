@@ -11,7 +11,7 @@ QUEUES-MENUS:
     LORE:
       - "<description>"
       - " "
-      - " &f&7* &fIn Fights: &b<playing>"
+      - " &f&7* &fIn Fights: &b<fighting>"
       - " &f&7* &fQueued: &b<queueing>"
       - ""
       - "&bTop ELO"
@@ -26,7 +26,7 @@ QUEUES-MENUS:
     LORE:
       - "<description>"
       - " "
-      - " &f&7* &fIn Fights: &b<playing>"
+      - " &f&7* &fIn Fights: &b<fighting>"
       - " &f&7* &fQueued: &b<queueing>"
       - ""
       - "&bTop ELO"
@@ -88,6 +88,61 @@ SETTINGS:
   FILTER: FILL # THERE IS FILL AND BRODER
   SETTING-NAME: "&b<settings>"
   SIZE: 36
+  SHOW_SCOREBOARD:
+    ENABLED:
+      LORE:
+        - ""
+        - "&e&l┃ &aEnabled"
+        - "&e┃ &7Disabled"
+    DISABLED:
+      LORE:
+        - ""
+        - "&e┃ &7Enabled"
+        - "&e&l┃ &cDisabled"
+  MENU_SOUNDS:
+    ENABLED:
+      LORE:
+        - ""
+        - "&e&l┃ &aEnabled"
+        - "&e┃ &7Disabled"
+    DISABLED:
+      LORE:
+        - ""
+        - "&e┃ &7Enabled"
+        - "&e&l┃ &cDisabled"
+  ALLOW_DUELS:
+    ENABLED:
+      LORE:
+        - ""
+        - "&e&l┃ &aEnabled"
+        - "&e┃ &7Disabled"
+    DISABLED:
+      LORE:
+        - ""
+        - "&e┃ &7Enabled"
+        - "&e&l┃ &cDisabled"
+  ALLOW_SPECTATORS:
+    ENABLED:
+      LORE:
+        - ""
+        - "&e&l┃ &aEnabled"
+        - "&e┃ &7Disabled"
+    DISABLED:
+      LORE:
+        - ""
+        - "&e┃ &7Enabled"
+        - "&e&l┃ &cDisabled"
+  SHOW_PLAYERS:
+    ENABLED:
+      LORE:
+        - ""
+        - "&e&l┃ &aEnabled"
+        - "&e┃ &7Disabled"
+    DISABLED:
+      LORE:
+        - ""
+        - "&e┃ &7Enabled"
+        - "&e&l┃ &cDisabled"
 EVENTS:
   TITLE: "&7Select an event"
   FILTER: FILL # THERE IS FILL AND BRODER

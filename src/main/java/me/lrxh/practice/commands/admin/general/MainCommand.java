@@ -19,14 +19,14 @@ public class MainCommand extends BaseCommand {
     @Default
     @Subcommand("help")
     public void help(Player player) {
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
         player.sendMessage(CC.translate("&c" + Practice.getInstance().getName() + " Core"));
         player.sendMessage(" ");
         player.sendMessage(CC.translate("&7* &c/practice setspawn &7- &fSet server spawn"));
         player.sendMessage(CC.translate("&7* &c/practice reload &7- &fReload all configs"));
         player.sendMessage(CC.translate("&7* &c/practice clear &7- &fClear all items"));
         player.sendMessage(" ");
-        player.sendMessage(CC.translate("&7&m-----------------------------------------"));
+        player.sendMessage(CC.translate("&7&m----------------------------------------"));
     }
 
     @Subcommand("setspawn")

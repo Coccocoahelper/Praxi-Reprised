@@ -30,7 +30,6 @@ public class CC {
     public static final String DARK_PURPLE = ChatColor.DARK_PURPLE.toString();
     public static final String DARK_RED = ChatColor.DARK_RED.toString();
     public static final String PINK = ChatColor.LIGHT_PURPLE.toString();
-    public static final String PARTY_PREFIX = CC.DARK_AQUA + "[Party] " + CC.WHITE;
     public static final String MENU_BAR = ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + "------------------------";
     public static final String CHAT_BAR = ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + "------------------------------------------------";
     public static final String SB_BAR = ChatColor.GRAY.toString() + ChatColor.STRIKETHROUGH + "----------------------";
@@ -40,7 +39,7 @@ public class CC {
     public static String STAR = StringEscapeUtils.unescapeJava("☆");
     public static String CHECKMARK = StringEscapeUtils.unescapeJava("✓");
     public static String X = StringEscapeUtils.unescapeJava("✗");
-    public static String LUNAR = StringEscapeUtils.unescapeJava("✪");
+    public static String FILLED_STAR = StringEscapeUtils.unescapeJava("✪");
     public static String LINE = StringEscapeUtils.unescapeJava("┃");
 
     public static String translate(String in) {

@@ -1,12 +1,12 @@
 JOIN_MESSAGE:
-  - "&7&m--------------------------------"
+  - "&7&m-------------------------------"
   - "&fWelcome to the <theme>Practice Network!"
   - " "
   - " &7* <theme>Discord: &fdiscord.gg/server"
   - " &7* <theme>Twitter: &ftwitter.com/@server"
   - " &7* <theme>Store: &fstore.server.net"
   - " "
-  - "&7&m--------------------------------"
+  - "&7&m-------------------------------"
 PING:
   YOUR: "<theme>Your ping is &f{0}"
   OTHERS: "<theme>{1}""s ping is &f{0}"
@@ -41,7 +41,7 @@ FOLLOW:
   FOLLOWED_LEFT: "<theme>{0} &left."
 PARTY:
   HELP:
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
     - "&cParty Help"
     - "&9/party create &7- &7Create a party"
     - "&9/party disband &7- &7Disband your party"
@@ -51,13 +51,13 @@ PARTY:
     - "&9/party open &7- &7Make your party open"
     - "&9/party close &7- &7Make your party closed"
     - "&9/party chat <msg> &7- &7Send a chat message"
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
   INFORMATION:
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
     - "&fPrivacy: <theme>{0}"
     - "&fLeader: <theme>{1}"
     - "&fMember: <theme>({2}) {3}"
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
   CREATE: "&eCreated a new party."
   DISBAND: "&cYour party has been disbanded."
   INVITE:
@@ -113,12 +113,12 @@ MATCH:
     changing your debounce time, and other modifications are strongly discouraged
     and may result in a ban, Your debounce time should be 10 ms."
   END_DETAILS:
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
     - "<theme>Post-Match Inventories &7&o&7(Click to view)"
     - "%INVENTORIES%"
     - "%ENDMESSAGE%"
     - "%ELO_CHANGES%"
-    - "&7&m------------------------------------------------"
+    - "&7&m-----------------------------------------------"
   END_WINNER_INVENTORY: "&aWinner{0}: "
   END_LOSER_INVENTORY: "&cLoser{0}: "
   CLICK_TO_VIEW_NAME: "&e{0}"
