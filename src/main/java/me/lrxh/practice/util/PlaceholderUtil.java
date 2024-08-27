@@ -128,8 +128,8 @@ public final class PlaceholderUtil {
         String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-ADVANTAGE");
         String isTie = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-TIE");
         String isDisadvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-DISADVANTAGE");
-        isAdvantage.replaceAll("<advantage>", playerHits - opponentHits);
-        isDisadvantage.replaceAll("<disadvantage>", opponentHits - playerHits);
+        isAdvantage.replaceAll("<advantage>", (playerHits - opponentHits).toString());
+        isDisadvantage.replaceAll("<disadvantage>", (opponentHits - playerHits).toString());
 
         if (playerHits - opponentHits > 0) {
             return CC.translate(isAdvantage);
