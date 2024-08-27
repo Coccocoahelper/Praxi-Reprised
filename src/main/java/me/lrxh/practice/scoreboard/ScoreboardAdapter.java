@@ -27,7 +27,7 @@ public class ScoreboardAdapter implements AssembleAdapter {
 
     public List<String> getLines(Player player) {
         Profile profile = Profile.getByUuid(player.getUniqueId());
-        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
 
         if (profile.getState() == ProfileState.LOBBY) {
             if (profile.getParty() != null) {
@@ -84,7 +84,7 @@ public class ScoreboardAdapter implements AssembleAdapter {
     }
 
     private String getAnimatedText() {
-        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
     
         int index = (int) ((System.currentTimeMillis() / scoreboardConfig.getInteger("UPDATE-INTERVAL"))
                 % scoreboardConfig.getStringList("TITLE").size());

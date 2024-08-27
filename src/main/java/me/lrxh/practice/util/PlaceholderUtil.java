@@ -24,7 +24,7 @@ public final class PlaceholderUtil {
         List<String> formattedLines = new ArrayList<>();
         Profile profile = Profile.getByUuid(player.getUniqueId());
         QueueProfile queueProfile = profile.getQueueProfile();
-        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
 
         for (String line : lines) {
             line = line.replaceAll("<online>", String.valueOf(Bukkit.getServer().getOnlinePlayers().size()));
@@ -122,13 +122,13 @@ public final class PlaceholderUtil {
         Match match = profile.getMatch();
         Integer playerHits = match.getGamePlayer(player).getHits();
         Integer opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
-        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig()
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
 
         String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-ADVANTAGE");
         String isTie = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-TIE");
         String isDisadvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-DISADVANTAGE");
-        isAdvantage.replaceAll("<advantage>", playerHits - opponentHits)
-        isDisadvantage.replaceAll("<disadvantage>", opponentHits - playerHits)
+        isAdvantage.replaceAll("<advantage>", playerHits - opponentHits);
+        isDisadvantage.replaceAll("<disadvantage>", opponentHits - playerHits);
 
         if (playerHits - opponentHits > 0) {
             return CC.translate(isAdvantage);
