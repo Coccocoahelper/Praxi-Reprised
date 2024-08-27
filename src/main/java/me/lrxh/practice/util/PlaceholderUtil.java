@@ -12,7 +12,7 @@ import me.lrxh.practice.profile.Profile;
 import me.lrxh.practice.profile.ProfileState;
 import me.lrxh.practice.queue.QueueProfile;
 import me.lrxh.practice.util.config.BasicConfigurationFile;
-import org.bukkit.configuration.file.FileConfiguration
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
