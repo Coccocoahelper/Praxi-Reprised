@@ -29,10 +29,13 @@ public final class PlaceholderUtil {
 
         for (String line : lines) {
             line = line.replaceAll("<online>", String.valueOf(Bukkit.getServer().getOnlinePlayers().size()));
-            line = line.replaceAll("<queued>", String.valueOf(Practice.getInstance().getCache().getPlayers().size()));
             line = line.replaceAll("<fighting>", String.valueOf(Practice.getInstance().getCache().getMatches().size() * 2));
-            line = line.replaceAll("<player>", player.getName());
+            line = line.replaceAll("<queueing>", String.valueOf(Practice.getInstance().getCache().getPlayers().size()));
             line = line.replaceAll("<your_ping>", String.valueOf((BukkitReflection.getPing(player))));
+            line = line.replaceAll("<player>", player.getName());
+            line = line.replaceAll("<wins>", String.valueOf(profile.getWins()));
+            line = line.replaceAll("<losses>", String.valueOf(profile.getLosses()));
+            line = line.replaceAll("<elo>", String.valueOf(profile.getElo()));
             line = line.replaceAll("<theme>", CC.translate("&" + profile.getOptions().theme().getColor().getChar()));
 
             if (line.contains("<silent>") && !profile.isSilent()) {

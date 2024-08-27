@@ -78,7 +78,7 @@ public class LeaderboardsMenu extends Menu {
 
             for (String line : Practice.getInstance().getMenusConfig().getStringList("LEADERBOARD.GLOBAL-STATS.LORE")) {
                 line = line.replaceAll("<wins>", String.valueOf(profile.getWins()));
-                line = line.replaceAll("<loses>", String.valueOf(profile.getLoses()));
+                line = line.replaceAll("<losses>", String.valueOf(profile.getLosses()));
                 line = line.replaceAll("<elo>", String.valueOf(profile.getElo()));
                 lore.add(line);
 

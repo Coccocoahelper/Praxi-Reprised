@@ -135,13 +135,13 @@ public class Profile {
         return wins;
     }
 
-    public int getLoses() {
-        int loses = 0;
+    public int getLosses() {
+        int losses = 0;
         for (Map.Entry<Kit, ProfileKitData> entry : this.getKitData().entrySet()) {
             ProfileKitData profileKitData = entry.getValue();
-            loses += profileKitData.getLost();
+            losses += profileKitData.getLost();
         }
-        return loses;
+        return losses;
     }
 
     public int getElo() {

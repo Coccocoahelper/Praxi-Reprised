@@ -58,7 +58,7 @@ public class Leaderboard {
         return new PlayerElo(profileDocument.getString("username"),
                 getElo(profileDocument, queue),
                 getKills(profileDocument, queue),
-                getLoses(profileDocument, queue));
+                getLosses(profileDocument, queue));
     }
 
     private static int getElo(Document profileDocument, String queue) {
@@ -73,7 +73,7 @@ public class Leaderboard {
         return queueStats != null ? queueStats.getInteger("won") : 0;
     }
 
-    private static int getLoses(Document profileDocument, String queue) {
+    private static int getLosses(Document profileDocument, String queue) {
         Document kitStatistics = (Document) profileDocument.get("kitStatistics");
         Document queueStats = (Document) kitStatistics.get(queue);
         return queueStats != null ? queueStats.getInteger("lost") : 0;

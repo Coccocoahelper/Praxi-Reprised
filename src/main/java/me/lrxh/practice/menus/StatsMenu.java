@@ -66,7 +66,7 @@ public class StatsMenu extends Menu {
 
             for (String line : Practice.getInstance().getMenusConfig().getStringList("STATS.GLOBAL-STATS.LORE")) {
                 line = line.replaceAll("<wins>", String.valueOf(profile.getWins()));
-                line = line.replaceAll("<loses>", String.valueOf(profile.getLoses()));
+                line = line.replaceAll("<losses>", String.valueOf(profile.getLosses()));
                 line = line.replaceAll("<elo>", String.valueOf(profile.getElo()));
                 lore.add(line);
 
@@ -98,7 +98,7 @@ public class StatsMenu extends Menu {
                 line = line.replaceAll("<queueing>", String.valueOf(queue.getQueuing()));
 
                 line = line.replaceAll("<wins>", String.valueOf(profile.getKitData().get(queue.getKit()).getWon()));
-                line = line.replaceAll("<loses>", String.valueOf(profile.getKitData().get(queue.getKit()).getLost()));
+                line = line.replaceAll("<losses>", String.valueOf(profile.getKitData().get(queue.getKit()).getLost()));
                 line = line.replaceAll("<elo>", String.valueOf(profile.getKitData().get(queue.getKit()).getElo()));
 
                 if (line.contains("<description>")) {
