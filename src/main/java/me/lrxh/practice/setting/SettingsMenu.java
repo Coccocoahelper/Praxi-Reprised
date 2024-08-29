@@ -69,14 +69,10 @@ public class SettingsMenu extends Menu {
         public ItemStack getButtonItem(Player player) {
             ArrayList<String> lore = new ArrayList<>();
             Profile profile = Profile.getByUuid(player.getUniqueId());
-            lore.add("&7" + this.settings.getDescription());
-            lore.add(" ");
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
                     if (profile.getOptions().showScoreboard()) {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE")) {
-                            lore.add(line);
-                        }
+                        lore.set(Arrays.asList(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE")));
                     } else {
                         for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE")) {
                             lore.add(line);
