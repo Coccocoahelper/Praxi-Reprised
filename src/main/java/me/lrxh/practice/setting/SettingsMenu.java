@@ -68,23 +68,22 @@ public class SettingsMenu extends Menu {
 
         @Override
         public ItemStack getButtonItem(Player player) {
-            ArrayList<String> lore = new ArrayList<>(Arrays.asList(originalLore));
-            String[] originalLore = {"StudyTonight.com"};
+            ArrayList<String> lore = new ArrayList<>();
             Profile profile = Profile.getByUuid(player.getUniqueId());
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
                     if (profile.getOptions().showScoreboard()) {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE"));
                     } else {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE"));
                     }
                     break;
                 }
                 case MENU_SOUNDS: {
                     if (profile.getOptions().menuSounds()) {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE"));
                     } else {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE"));
                     }
                     break;
                 }
@@ -105,25 +104,25 @@ public class SettingsMenu extends Menu {
                 }
                 case ALLOW_DUELS: {
                     if (profile.getOptions().receiveDuelRequests()) {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE"));
                     } else {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE"));
                     }
                     break;
                 }
                 case ALLOW_SPECTATORS: {
                     if (profile.getOptions().allowSpectators()) {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE"));
                     } else {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE"));
                     }
                     break;
                 }
                 case SHOW_PLAYERS: {
                     if (profile.getOptions().showPlayers()) {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE"));
                     } else {
-                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE");
+                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE"));
                     }
                     break;
                 }
