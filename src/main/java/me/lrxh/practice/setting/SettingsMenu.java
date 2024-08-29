@@ -68,28 +68,23 @@ public class SettingsMenu extends Menu {
 
         @Override
         public ItemStack getButtonItem(Player player) {
-            ArrayList<String> lore = new ArrayList<>();
+            ArrayList<String> lore = new ArrayList<>(Arrays.asList(originalLore));
+            String[] originalLore = {"StudyTonight.com"};
             Profile profile = Profile.getByUuid(player.getUniqueId());
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
                     if (profile.getOptions().showScoreboard()) {
-                        lore.set(Arrays.asList(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE")));
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE");
                     } else {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE");
                     }
                     break;
                 }
                 case MENU_SOUNDS: {
                     if (profile.getOptions().menuSounds()) {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE");
                     } else {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE");
                     }
                     break;
                 }
@@ -110,37 +105,25 @@ public class SettingsMenu extends Menu {
                 }
                 case ALLOW_DUELS: {
                     if (profile.getOptions().receiveDuelRequests()) {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE");
                     } else {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE");
                     }
                     break;
                 }
                 case ALLOW_SPECTATORS: {
                     if (profile.getOptions().allowSpectators()) {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE");
                     } else {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE");
                     }
                     break;
                 }
                 case SHOW_PLAYERS: {
                     if (profile.getOptions().showPlayers()) {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE");
                     } else {
-                        for (String line : Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE")) {
-                            lore.add(line);
-                        }
+                        originalLore = Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE");
                     }
                     break;
                 }
