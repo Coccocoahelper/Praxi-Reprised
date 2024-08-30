@@ -93,7 +93,7 @@ public final class PlaceholderUtil {
 
                 if (match instanceof BasicFreeForAllMatch) {
                     BasicFreeForAllMatch basicFreeForAllMatch = (BasicFreeForAllMatch) match;
-                    line = line.replaceAll("<remaning>", String.valueOf(basicFreeForAllMatch.getRemainingTeams()));
+                    line = line.replaceAll("<remaining>", String.valueOf(basicFreeForAllMatch.getRemainingTeams()));
                 }
 
                 if (match.getOpponent(player.getUniqueId()) != null) {
@@ -184,7 +184,7 @@ public final class PlaceholderUtil {
         } else if (opponentCombo > 1) {
             return CC.translate(isOpponentCombo);
         } else {
-            return CC.translate(isNoCombo)
+            return CC.translate(isNoCombo);
         }
     }
     /**
@@ -214,7 +214,7 @@ public final class PlaceholderUtil {
         } else if (opponentCombo > 1) {
             return CC.translate(isOpponentCombo);
         } else {
-            return CC.translate(isNoCombo)
+            return CC.translate(isNoCombo);
         }
     }
 }
