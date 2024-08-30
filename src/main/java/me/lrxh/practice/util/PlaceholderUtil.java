@@ -176,8 +176,8 @@ public final class PlaceholderUtil {
         String isNoCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.COMBO-COUNTER.NO-COMBO");
         String isOpponentCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.COMBO-COUNTER.OPPONENT-COMBO");
 
-        isYourCombo = isAdvantage.replace("<your_combo>", Integer.toString(playerCombo));
-        isOpponentCombo = isDisadvantage.replace("<opponent_combo>", Integer.toString(opponentCombo));
+        isYourCombo = isYourCombo.replace("<your_combo>", Integer.toString(playerCombo));
+        isOpponentCombo = isOpponentCombo.replace("<opponent_combo>", Integer.toString(opponentCombo));
 
         if (playerCombo > 1) {
             return CC.translate(isYourCombo);
@@ -206,8 +206,8 @@ public final class PlaceholderUtil {
         String isNoCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.ANOTHER-COMBO-COUNTER.NO-COMBO");
         String isOpponentCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.ANOTHER-COMBO-COUNTER.OPPONENT-COMBO");
 
-        isYourCombo = isAdvantage.replace("<your_combo>", Integer.toString(playerCombo));
-        isOpponentCombo = isDisadvantage.replace("<opponent_combo>", Integer.toString(opponentCombo));
+        isYourCombo = isYourCombo.replace("<your_combo>", Integer.toString(playerCombo));
+        isOpponentCombo = isOpponentCombo.replace("<opponent_combo>", Integer.toString(opponentCombo));
 
         if (playerCombo > 1) {
             return CC.translate(isYourCombo);
