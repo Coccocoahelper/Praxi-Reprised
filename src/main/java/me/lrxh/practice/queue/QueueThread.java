@@ -99,11 +99,20 @@ public class QueueThread extends Thread {
                                     participantA, participantB, false);
 
 
-                            for (String line : Locale.MATCH_START.formatLines(firstPlayer, secondPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(secondPlayer))) {
-                                firstPlayer.sendMessage(line);
-                            }
-                            for (String line : Locale.MATCH_START.formatLines(secondPlayer, firstPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(firstPlayer))) {
-                                secondPlayer.sendMessage(line);
+                            if (queueProfile.isRanked()) {
+                                for (String line : Locale.MATCH_START_RANKED.formatLines(firstPlayer, secondPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(secondPlayer))) {
+                                    firstPlayer.sendMessage(line);
+                                }
+                                for (String line : Locale.MATCH_START_RANKED.formatLines(secondPlayer, firstPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(firstPlayer))) {
+                                    secondPlayer.sendMessage(line);
+                                }
+                            } else {
+                                for (String line : Locale.MATCH_START_UNRANKED.formatLines(firstPlayer, secondPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(secondPlayer))) {
+                                    firstPlayer.sendMessage(line);
+                                }
+                                for (String line : Locale.MATCH_START_UNRANKED.formatLines(secondPlayer, firstPlayer.getName(), queueProfile.getQueue().getKit().getName(), BukkitReflection.getPing(firstPlayer))) {
+                                    secondPlayer.sendMessage(line);
+                                }
                             }
 
                             new BukkitRunnable() {
