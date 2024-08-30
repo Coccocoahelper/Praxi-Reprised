@@ -63,20 +63,30 @@ public class ScoreboardAdapter implements AssembleAdapter {
                 return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("IN-PARTY.IN-FFA-MATCH")), player);
             }
 
-            if (match.getState().equals(MatchState.STARTING_ROUND)) {
-                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.STARTING")), player);
-            }
-            if (match.getState().equals(MatchState.ENDING_MATCH)) {
-                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.ENDING")), player);
-            }
-            if (match.getState().equals(MatchState.PLAYING_ROUND)) {
-                if (match.getKit().getGameRules().isBoxing()) {
-                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH-BOXING")), player);
+            if (match.getKit().getGameRules().isBoxing()) {
+                if (match.getState().equals(MatchState.STARTING_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BOXING.STARTING")), player);
+                } else if (match.getState().equals(MatchState.PLAYER_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BOXING.IN-MATCH")), player);
+                } else {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BOXING.ENDING")), player);
                 }
-                if (match.getKit().getGameRules().isBedfight()) {
-                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH-BEDFIGHT")), player);
+            } else if (match.getKit().getGameRules().isBedfight()) {
+                if (match.getState().equals(MatchState.STARTING_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BEDFIGHT.STARTING")), player);
+                } else if (match.getState().equals(MatchState.PLAYING_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BEDFIGHT.IN-MATCH")), player);
+                } else {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.BEDFIGHT.ENDING")), player);
                 }
-                return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.IN-MATCH")), player);
+            } else {
+                if (match.getState().equals(MatchState.STARTING_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.NORMAL.IN-MATCH")), player);
+                } else if (match.getState().equals(MatchState.PLAYING_ROUND)) {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.NORMAL.IN-MATCH")), player);
+                } else {
+                    return PlaceholderUtil.format(new ArrayList<>(scoreboardConfig.getStringList("MATCH.NORMAL.ENDING")), player);
+                }
             }
         }
 
