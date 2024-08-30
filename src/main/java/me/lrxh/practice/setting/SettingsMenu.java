@@ -21,7 +21,6 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,21 +69,17 @@ public class SettingsMenu extends Menu {
         public ItemStack getButtonItem(Player player) {
             ArrayList<String> lore = new ArrayList<>();
             Profile profile = Profile.getByUuid(player.getUniqueId());
+            lore.add("&7" + this.settings.getDescription());
+            lore.add(" ");
             switch (this.settings) {
                 case SHOW_SCOREBOARD: {
-                    if (profile.getOptions().showScoreboard()) {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.ENABLED.LORE"));
-                    } else {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_SCOREBOARD.DISALED.LORE"));
-                    }
+                    lore.add(profile.getOptions().showScoreboard() ? "&e&l❙ &aYes" : "&e❙ &7Yes");
+                    lore.add(!profile.getOptions().showScoreboard() ? "&e&l❙ &aNo" : "&e❙ &7No");
                     break;
                 }
                 case MENU_SOUNDS: {
-                    if (profile.getOptions().menuSounds()) {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.ENABLED.LORE"));
-                    } else {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.MENU_SOUNDS.DISALED.LORE"));
-                    }
+                    lore.add(profile.getOptions().menuSounds() ? "&e&l❙ &aYes" : "&e❙ &7Yes");
+                    lore.add(!profile.getOptions().menuSounds() ? "&e&l❙ &aNo" : "&e❙ &7No");
                     break;
                 }
                 case TIME_CHANGE: {
@@ -103,27 +98,18 @@ public class SettingsMenu extends Menu {
                     break;
                 }
                 case ALLOW_DUELS: {
-                    if (profile.getOptions().receiveDuelRequests()) {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.ENABLED.LORE"));
-                    } else {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_DUELS.DISALED.LORE"));
-                    }
+                    lore.add(profile.getOptions().receiveDuelRequests() ? "&e&l❙ &aYes" : "&e❙ &7Yes");
+                    lore.add(!profile.getOptions().receiveDuelRequests() ? "&e&l❙ &aNo" : "&e❙ &7No");
                     break;
                 }
                 case ALLOW_SPECTATORS: {
-                    if (profile.getOptions().allowSpectators()) {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.ENABLED.LORE"));
-                    } else {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.ALLOW_SPECTATORS.DISALED.LORE"));
-                    }
+                    lore.add(profile.getOptions().allowSpectators() ? "&e&l❙ &aYes" : "&e❙ &7Yes");
+                    lore.add(!profile.getOptions().allowSpectators() ? "&e&l❙ &aNo" : "&e❙ &7No");
                     break;
                 }
                 case SHOW_PLAYERS: {
-                    if (profile.getOptions().showPlayers()) {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.ENABLED.LORE"));
-                    } else {
-                        lore.set(Practice.getInstance().getMenusConfig().getStringList("SETTINGS.SHOW_PLAYERS.DISALED.LORE"));
-                    }
+                    lore.add(profile.getOptions().showPlayers() ? "&e&l❙ &aYes" : "&e❙ &7Yes");
+                    lore.add(!profile.getOptions().showPlayers() ? "&e&l❙ &aNo" : "&e❙ &7No");
                     break;
                 }
                 case KILL_EFFECTS: {
@@ -309,4 +295,3 @@ public class SettingsMenu extends Menu {
         }
     }
 }
- 
