@@ -90,6 +90,7 @@ public final class PlaceholderUtil {
                             .replaceAll("<teamCount>", String.valueOf(playerTeam.getAliveCount()))
                             .replaceAll("<teamMax>", String.valueOf(playerTeam.getPlayers().size()));
                 }
+
                 if (match instanceof BasicFreeForAllMatch) {
                     BasicFreeForAllMatch basicFreeForAllMatch = (BasicFreeForAllMatch) match;
                     line = line.replaceAll("<remaning>", String.valueOf(basicFreeForAllMatch.getRemainingTeams()));
@@ -102,12 +103,12 @@ public final class PlaceholderUtil {
                     line = line.replaceAll("<your_hits>", String.valueOf(match.getGamePlayer(player).getHits()));
                     line = line.replaceAll("<opponent_hits>", String.valueOf(match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits()));
                     line = line.replaceAll("<hit_difference>", getDifference(player, profile));
-                    line = line.replaceAll("<combo>", getHitCombo(player, false));
-                    line = line.replaceAll("<mmcCombo>", getHitCombo(player, true));
+                    line = line.replaceAll("<combo>", getHitCombo(player, profile));
+                    line = line.replaceAll("<another_combo>", getAnotherHitCombo(player, profile));
 
                     if (match.getKit().getGameRules().isBedfight()) {
-                        line = line.replaceAll("<bedA>", match.isBedABroken() ? scoreboardConfig.getString("MATCH.IN-MATCH-BEDFIGHT-BED-BROKEN") : scoreboardConfig.getString("MATCH.IN-MATCH-BEDFIGHT-BED-ALIVE"));
-                        line = line.replaceAll("<bedB>", match.isBedBBroken() ? scoreboardConfig.getString("MATCH.IN-MATCH-BEDFIGHT-BED-BROKEN") : scoreboardConfig.getString("MATCH.IN-MATCH-BEDFIGHT-BED-ALIVE"));
+                        line = line.replaceAll("<bedA>", match.isBedABroken() ? scoreboardConfig.getString("MATCH.IN-MATCH.BEDFIGHT.BED-BROKEN") : scoreboardConfig.getString("MATCH.IN-MATCH.BEDFIGHT.BED-ALIVE"));
+                        line = line.replaceAll("<bedB>", match.isBedBBroken() ? scoreboardConfig.getString("MATCH.IN-MATCH.BEDFIGHT.BED-BROKEN") : scoreboardConfig.getString("MATCH.IN-MATCH.BEDFIGHT.BED-ALIVE"));
 
                         boolean aTeam = match.getParticipantA().containsPlayer(player.getUniqueId());
                         line = line.replaceAll("<youA>", aTeam ? "" : "YOU");
@@ -136,15 +137,15 @@ public final class PlaceholderUtil {
      * @return the difference between the player and the opponent hits
      */
     public String getDifference(Player player, Profile profile) {
-        FileConfiguration scoreboardConfig = Practice.getInstance().getScoreboardConfig().getConfiguration();
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
         Match match = profile.getMatch();
 
         Integer playerHits = match.getGamePlayer(player).getHits();
         Integer opponentHits = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getHits();
 
-        String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-ADVANTAGE");
-        String isTie = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-TIE");
-        String isDisadvantage = scoreboardConfig.getString("MATCH.IN-MATCH-BOXING-DISADVANTAGE");
+        String isAdvantage = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.HIT-DIFFERENCE.ADVANTAGE");
+        String isTie = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.HIT-DIFFERENCE.TIE");
+        String isDisadvantage = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.HIT-DIFFERENCE.DISADVANTAGE");
 
         isAdvantage = isAdvantage.replace("<advantage>", Integer.toString(playerHits - opponentHits));
         isDisadvantage = isDisadvantage.replace("<disadvantage>", Integer.toString(opponentHits - playerHits));
@@ -164,23 +165,56 @@ public final class PlaceholderUtil {
      * @param player the player
      * @return the hit combo
      */
-    public String getHitCombo(Player player, boolean isMMCCombo) {
-        Profile profile = Profile.getByUuid(player.getUniqueId());
+    public String getHitCombo(Player player, Profile profile) {
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
         Match match = profile.getMatch();
+
         Integer playerCombo = match.getGamePlayer(player).getCombo();
         Integer opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
-        String hitCombo = "";
-        
-        if (playerCombo > 1) {
-            hitCombo = "&a" + playerCombo + " Combo";
-        } else if (opponentCombo > 1) {
-            hitCombo = "&c" + opponentCombo + " Combo";
-        } else if (opponentCombo < 2 && playerCombo < 2 && isMMCCombo) {
-            hitCombo = "&f1st to 100 wins!";
-        } else if (opponentCombo < 2 && playerCombo < 2 && !isMMCCombo) {
-            hitCombo = "&fNo Combo";
-        }
 
-        return CC.translate(hitCombo);
+        String isYourCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.COMBO-COUNTER.YOUR-COMBO");
+        String isNoCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.COMBO-COUNTER.NO-COMBO");
+        String isOpponentCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.COMBO-COUNTER.OPPONENT-COMBO");
+
+        isYourCombo = isAdvantage.replace("<your_combo>", Integer.toString(playerCombo));
+        isOpponentCombo = isDisadvantage.replace("<opponent_combo>", Integer.toString(opponentCombo));
+
+        if (playerCombo > 1) {
+            return CC.translate(isYourCombo);
+        } else if (opponentCombo > 1) {
+            return CC.translate(isOpponentCombo);
+        } else {
+            return CC.translate(isNoCombo)
+        }
+    }
+    /**
+     * Get players combo
+     *
+     * @param player the player
+     * @return the hit combo
+     *
+     * Primarily made to be able to replicate Bolt
+     */
+    public String getAnotherHitCombo(Player player, Profile profile) {
+        BasicConfigurationFile scoreboardConfig = Practice.getInstance().getScoreboardConfig();
+        Match match = profile.getMatch();
+
+        Integer playerCombo = match.getGamePlayer(player).getCombo();
+        Integer opponentCombo = match.getGamePlayer(match.getOpponent(player.getUniqueId())).getCombo();
+
+        String isYourCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.ANOTHER-COMBO-COUNTER.YOUR-COMBO");
+        String isNoCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.ANOTHER-COMBO-COUNTER.NO-COMBO");
+        String isOpponentCombo = scoreboardConfig.getString("MATCH.IN-MATCH.BOXING.ANOTHER-COMBO-COUNTER.OPPONENT-COMBO");
+
+        isYourCombo = isAdvantage.replace("<your_combo>", Integer.toString(playerCombo));
+        isOpponentCombo = isDisadvantage.replace("<opponent_combo>", Integer.toString(opponentCombo));
+
+        if (playerCombo > 1) {
+            return CC.translate(isYourCombo);
+        } else if (opponentCombo > 1) {
+            return CC.translate(isOpponentCombo);
+        } else {
+            return CC.translate(isNoCombo)
+        }
     }
 }
